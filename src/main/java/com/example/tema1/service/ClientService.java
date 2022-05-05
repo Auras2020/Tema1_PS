@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * The type Client service.
+ */
 @Service
 public class ClientService implements IClientService{
 

@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+/**
+ * The type Film service.
+ */
 @Service
 public class FilmService implements IFilmService{
 

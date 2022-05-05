@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+/**
+ * The type Spectacol service.
+ */
 @Service
 public class SpectacolService implements ISpectacolService{
 
