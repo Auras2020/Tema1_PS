@@ -1,10 +1,12 @@
 package com.example.tema1.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -13,24 +15,44 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-public class Film extends Event {
+//@Table(name = "film")
+public class Film extends Event{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "film_id", nullable = false)
     private Long id;
 
+    private String nume;
     private String gen;
     private int varsta;
     private String tip;
+    private String data;
     private int capacitate;
     private int pret;
     private String regizor;
     private String actori;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JsonBackReference
+    @JoinTable(name="bilete_filme",
+            joinColumns = @JoinColumn(name="film_id"),
+            inverseJoinColumns = @JoinColumn(name="client_id"))
+    private Set<Client> clients;
+
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
     public void setId(Long id) {
         this.id = id;
     }
@@ -49,10 +71,11 @@ public class Film extends Event {
      * @param actori     the actori
      */
     public Film(String nume, String gen, int varsta, String tip, String data, int capacitate, int pret, String regizor, String actori) {
-        super(nume, data);
+        this.nume = nume;
         this.gen = gen;
         this.varsta = varsta;
         this.tip = tip;
+        this.data = data;
         this.capacitate = capacitate;
         this.pret = pret;
         this.regizor = regizor;
@@ -65,6 +88,7 @@ public class Film extends Event {
     public Film() {
 
     }
+
 
     /**
      * Gets gen.
@@ -192,15 +216,33 @@ public class Film extends Event {
         this.actori = actori;
     }
 
+    /**
+     * Gets clients.
+     *
+     * @return the clients
+     */
+    public Set<Client> getClients() {
+        return clients;
+    }
+
+    /**
+     * Sets clients.
+     *
+     * @param clients the clients
+     */
+    public void setClients(Set<Client> clients) {
+        this.clients = clients;
+    }
+
     @Override
     public String toString() {
         return "Film{" +
                 "id=" + id +
-                ", nume='" + this.getNume() + '\'' +
+                ", nume='" + nume + '\'' +
                 ", gen='" + gen + '\'' +
                 ", varsta=" + varsta +
                 ", tip='" + tip + '\'' +
-                ", data='" + this.getData() + '\'' +
+                ", data='" + data + '\'' +
                 ", capacitate=" + capacitate +
                 ", pret=" + pret +
                 ", regizor='" + regizor + '\'' +

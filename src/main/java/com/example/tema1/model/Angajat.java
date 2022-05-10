@@ -17,8 +17,11 @@ public class Angajat extends User{
     @Column(name = "id", nullable = false)
     private Long id;
 
+    private String nume;
     private String interval_orar;
     private int post_de_munca;
+    private String username;
+    private String password;
 
     /**
      * Instantiates a new Angajat.
@@ -26,11 +29,15 @@ public class Angajat extends User{
      * @param nume          the nume
      * @param interval_orar the interval orar
      * @param post_de_munca the post de munca
+     * @param username      the username
+     * @param password      the password
      */
-    public Angajat(String nume, String interval_orar, int post_de_munca) {
-        super(nume);
+    public Angajat(String nume, String interval_orar, int post_de_munca, String username, String password) {
+        this.nume = nume;
         this.interval_orar = interval_orar;
         this.post_de_munca = post_de_munca;
+        this.username = username;
+        this.password = password;
     }
 
     /**
@@ -40,12 +47,30 @@ public class Angajat extends User{
 
     }
 
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getNume() {
+        return nume;
+    }
+
+    public void setNume(String nume) {
+        this.nume = nume;
     }
 
     /**
@@ -84,13 +109,31 @@ public class Angajat extends User{
         this.post_de_munca = post_de_munca;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "Angajat{" +
                 "id=" + id +
-                ", nume='" + this.getNume() + '\'' +
+                ", nume='" + nume + '\'' +
                 ", interval_orar='" + interval_orar + '\'' +
                 ", post_de_munca=" + post_de_munca +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 

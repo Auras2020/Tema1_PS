@@ -1,22 +1,15 @@
 package com.example.tema1.controller;
 
-import com.example.tema1.model.*;
-import com.example.tema1.service.EventService;
-import com.example.tema1.service.FilmService;
-import com.example.tema1.service.SpectacolService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
 /**
  * The type Event controller.
  */
-@RestController
+/*@RestController
 @RequestMapping("/events")
 public class EventController {
 
     private static FilmService filmService;
     private static SpectacolService spectacolService;
-    private EventService eventService;
+    private static EventService eventService;
 
     /**
      * Instantiates a new Event controller.
@@ -25,7 +18,7 @@ public class EventController {
      * @param spectacolService the spectacol service
      * @param eventService     the event service
      */
-    @Autowired
+    /*@Autowired
     public EventController(FilmService filmService, SpectacolService spectacolService, EventService eventService) {
         this.filmService = filmService;
         this.spectacolService = spectacolService;
@@ -38,23 +31,35 @@ public class EventController {
      * @param film the film
      * @return the string
      */
-    @PostMapping("/insert/film")
+    /*@PostMapping("/insert/film")
     public String insertFilm(@RequestBody Film film){
         return filmService.save(film).toString();
     }
 
-    /**
-     * Insert film factory string.
-     * inseram filmul creat in clasa de Factory(EventFactory)
-     * @param film the film
-     * @return the string
-     */
-    @PostMapping("/insert/film/factory")
-    public String insertFilmFactory(@RequestBody Film film){
+    /*@PostMapping("/insert/film/factory")
+    public String insertFilmFactory(@RequestBody Film film, @RequestParam String f){
         EventFactory eventFactory = new EventFactory();
-        film = (Film)eventFactory.createEvent(EventType.FILM);
+        Event event1 = film;
+        film = (Film)eventFactory.createEvent(EventType.FILM, event1);
 
-        return filmService.save(film).toString();
+        return filmService.save(film).toString() + f;
+    }*/
+
+    /*@PostMapping("/insert/film/factory")
+    public String insertFilmFactory(@RequestBody Event event){
+        EventFactory eventFactory = new EventFactory();
+        //Film film = (Film)event;
+        Event event1 = event;
+
+       // if(event instanceof Film){
+            //Film film = (Film) event;
+              //   event = eventFactory.createEvent(EventType.FILM, event);
+            //Film event1 = (Film) event;
+          //  event = (Film)eventFactory.createEvent(EventType.FILM, event1);
+        event = eventFactory.createEvent(EventType.FILM, event1);
+            return eventService.save(event).toString();
+        //}
+        //return null;
     }
 
     /**
@@ -63,7 +68,7 @@ public class EventController {
      * @param spectacol the spectacol
      * @return the string
      */
-    @PostMapping("/insert/spectacol")
+    /*@PostMapping("/insert/spectacol")
     public String insertSpectacol(@RequestBody Spectacol spectacol){
         return spectacolService.save(spectacol).toString();
     }
@@ -74,20 +79,20 @@ public class EventController {
      * @param spectacol the spectacol
      * @return the string
      */
-    @PostMapping("/insert/spectacol/factory")
+    /*@PostMapping("/insert/spectacol/factory")
     public String insertSpectacolFactory(@RequestBody Spectacol spectacol){
         EventFactory eventFactory = new EventFactory();
         spectacol = (Spectacol) eventFactory.createEvent(EventType.SPECTACOL);
 
         return spectacolService.save(spectacol).toString();
-    }
+    }*/
 
     /**
      * Show events iterable.
      * afisam toate evenimentele din baza de date(filme, spectacole)
      * @return the iterable
      */
-    @GetMapping("/all")
+    /*@GetMapping("/all")
     public Iterable<Event> showEvents(){
         for(Event e: eventService.findAll()){
             System.out.println(e.toString());
@@ -100,7 +105,7 @@ public class EventController {
      * afisam toate filmele din baza de date
      * @return the iterable
      */
-    @GetMapping("/all/filme")
+    /*@GetMapping("/all/filme")
     public Iterable<Film> showFilme(){
         for(Event e: eventService.findAll()){
             if(e instanceof Film){
@@ -115,7 +120,7 @@ public class EventController {
      * afisam toate spectacolele din baza de date
      * @return the iterable
      */
-    @GetMapping("/all/spectacole")
+    /*@GetMapping("/all/spectacole")
     public Iterable<Spectacol> showSpectacole(){
         for(Event e: eventService.findAll()){
             if(e instanceof Spectacol){
@@ -130,7 +135,7 @@ public class EventController {
      *
      * @return the film service
      */
-    public static FilmService getFilmService() {
+   /* public static FilmService getFilmService() {
         return filmService;
     }
 
@@ -139,7 +144,7 @@ public class EventController {
      *
      * @param filmService the film service
      */
-    public void setFilmService(FilmService filmService) {
+   /* public void setFilmService(FilmService filmService) {
         this.filmService = filmService;
     }
 
@@ -148,7 +153,7 @@ public class EventController {
      *
      * @return the spectacol service
      */
-    public static SpectacolService getSpectacolService() {
+  /*  public static SpectacolService getSpectacolService() {
         return spectacolService;
     }
 
@@ -158,7 +163,7 @@ public class EventController {
      *
      * @param spectacolService the spectacol service
      */
-    public void setSpectacolService(SpectacolService spectacolService) {
+   /* public void setSpectacolService(SpectacolService spectacolService) {
         this.spectacolService = spectacolService;
     }
 
@@ -167,7 +172,7 @@ public class EventController {
      *
      * @return the event service
      */
-    public EventService getEventService() {
+    /*public static EventService getEventService() {
         return eventService;
     }
 
@@ -176,7 +181,7 @@ public class EventController {
      *
      * @param eventService the event service
      */
-    public void setEventService(EventService eventService) {
+    /*public void setEventService(EventService eventService) {
         this.eventService = eventService;
     }
-}
+}*/

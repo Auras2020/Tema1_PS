@@ -3,7 +3,6 @@ package com.example.tema1.controller;
 import com.example.tema1.model.*;
 import com.example.tema1.service.AngajatService;
 import com.example.tema1.service.ClientService;
-import com.example.tema1.service.UserService;
 import com.example.tema1.service.VanzatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * The type User controller.
  */
-@RestController
+/*@RestController
 @RequestMapping("/users")
 public class UserController {
 
@@ -28,7 +27,7 @@ public class UserController {
      * @param vanzatorService the vanzator service
      * @param userService     the user service
      */
-    @Autowired
+   /* @Autowired
     public UserController(ClientService clientService, AngajatService angajatService, VanzatorService vanzatorService, UserService userService) {
         this.clientService = clientService;
         this.angajatService = angajatService;
@@ -42,7 +41,7 @@ public class UserController {
      * @param client the client
      * @return the string
      */
-    @PostMapping("/insert/client")
+   /* @PostMapping("/insert/client")
     public String insertClient(@RequestBody Client client){
         return clientService.save(client).toString();
     }
@@ -53,7 +52,7 @@ public class UserController {
      * @param client the client
      * @return the string
      */
-    @PostMapping("/insert/client/factory")
+   /* @PostMapping("/insert/client/factory")
     public String insertClientFactory(@RequestBody Client client){
         UserFactory userFactory = new UserFactory();
         client = (Client) userFactory.createUser(UserType.CLIENT);
@@ -67,7 +66,7 @@ public class UserController {
      * @param angajat the angajat
      * @return the string
      */
-    @PostMapping("/insert/angajat")
+   /* @PostMapping("/insert/angajat")
     public String insertAngajat(@RequestBody Angajat angajat){
         return angajatService.save(angajat).toString();
     }
@@ -78,7 +77,7 @@ public class UserController {
      * @param angajat the angajat
      * @return the string
      */
-    @PostMapping("/insert/angajat/factory")
+   /* @PostMapping("/insert/angajat/factory")
     public String insertAngajatFactory(@RequestBody Angajat angajat){
         UserFactory userFactory = new UserFactory();
         angajat = (Angajat) userFactory.createUser(UserType.ANGAJAT);
@@ -92,7 +91,7 @@ public class UserController {
      * @param vanzator the vanzator
      * @return the string
      */
-    @PostMapping("/insert/vanzator")
+   /* @PostMapping("/insert/vanzator")
     public String insertVanzator(@RequestBody Vanzator vanzator){
         return vanzatorService.save(vanzator).toString();
     }
@@ -103,7 +102,7 @@ public class UserController {
      * @param vanzator the vanzator
      * @return the string
      */
-    @PostMapping("/insert/vanzator/factory")
+   /* @PostMapping("/insert/vanzator/factory")
     public String insertVanzatorFactory(@RequestBody Vanzator vanzator){
         UserFactory userFactory = new UserFactory();
         vanzator = (Vanzator) userFactory.createUser(UserType.VANZATOR);
@@ -116,7 +115,7 @@ public class UserController {
      * afisam toti userii din baza de date(clienti, angajati, vanzatori)
      * @return the iterable
      */
-    @GetMapping("/all")
+   /* @GetMapping("/all")
     public Iterable<User> showUsers(){
         for(User u : userService.findAll()){
             System.out.println(u.toString());
@@ -129,7 +128,7 @@ public class UserController {
      * afisam clientii din baza de date
      * @return the iterable
      */
-    @GetMapping("/all/clienti")
+   /* @GetMapping("/all/clienti")
     public Iterable<Client> showClienti(){
         for(User u: userService.findAll()){
             if(u instanceof Client){
@@ -144,7 +143,7 @@ public class UserController {
      * afisam angajatii din baza de date
      * @return the iterable
      */
-    @GetMapping("/all/angajati")
+  /*  @GetMapping("/all/angajati")
     public Iterable<Angajat> showAngajati(){
         for(User u: userService.findAll()){
             if(u instanceof Angajat){
@@ -159,7 +158,7 @@ public class UserController {
      * afisam vanzatorii din baza de date
      * @return the iterable
      */
-    @GetMapping("/all/vanzatori")
+   /* @GetMapping("/all/vanzatori")
     public Iterable<Vanzator> showVanzatori(){
         for(User u: userService.findAll()){
             if(u instanceof Vanzator){
@@ -174,7 +173,7 @@ public class UserController {
      *
      * @return the client service
      */
-    public static ClientService getClientService() {
+   /* public static ClientService getClientService() {
         return clientService;
     }
 
@@ -183,7 +182,7 @@ public class UserController {
      *
      * @param clientService the client service
      */
-    public static void setClientService(ClientService clientService) {
+   /* public static void setClientService(ClientService clientService) {
         UserController.clientService = clientService;
     }
 
@@ -192,7 +191,7 @@ public class UserController {
      *
      * @return the angajat service
      */
-    public static AngajatService getAngajatService() {
+   /* public static AngajatService getAngajatService() {
         return angajatService;
     }
 
@@ -201,7 +200,7 @@ public class UserController {
      *
      * @param angajatService the angajat service
      */
-    public static void setAngajatService(AngajatService angajatService) {
+   /* public static void setAngajatService(AngajatService angajatService) {
         UserController.angajatService = angajatService;
     }
 
@@ -210,7 +209,7 @@ public class UserController {
      *
      * @return the vanzator service
      */
-    public static VanzatorService getVanzatorService() {
+   /* public static VanzatorService getVanzatorService() {
         return vanzatorService;
     }
 
@@ -219,7 +218,7 @@ public class UserController {
      *
      * @param vanzatorService the vanzator service
      */
-    public static void setVanzatorService(VanzatorService vanzatorService) {
+   /* public static void setVanzatorService(VanzatorService vanzatorService) {
         UserController.vanzatorService = vanzatorService;
     }
-}
+}*/

@@ -1,4 +1,4 @@
-package com.example.tema1.model;
+package com.example.tema1.service;
 
 /**
  * The enum Event type.

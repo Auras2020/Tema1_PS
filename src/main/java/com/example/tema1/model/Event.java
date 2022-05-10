@@ -12,12 +12,7 @@ import java.util.Set;
  */
 @Getter
 @Setter
-@Entity
-public abstract class Event {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+public class Event {
 
     private String nume;
     private String data;
@@ -76,4 +71,13 @@ public abstract class Event {
         this.data = data;
     }
 
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof Event;
+    }
 }

@@ -10,22 +10,28 @@ import javax.persistence.*;
  */
 @Getter
 @Setter
-@Entity
-public abstract class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
+//@Entity
+public class User {
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Column(name = "id", nullable = false)
+    //private Long id;
 
     private String nume;
+    private String username;
+    private String password;
 
     /**
      * Instantiates a new User.
      *
-     * @param nume the nume
+     * @param nume     the nume
+     * @param username the username
+     * @param password the password
      */
-    public User(String nume) {
+    public User(String nume, String username, String password) {
         this.nume = nume;
+        this.username = username;
+        this.password = password;
     }
 
     /**
@@ -51,5 +57,41 @@ public abstract class User {
      */
     public void setNume(String nume) {
         this.nume = nume;
+    }
+
+    /**
+     * Gets username.
+     *
+     * @return the username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * Sets username.
+     *
+     * @param username the username
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    /**
+     * Gets password.
+     *
+     * @return the password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * Sets password.
+     *
+     * @param password the password
+     */
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

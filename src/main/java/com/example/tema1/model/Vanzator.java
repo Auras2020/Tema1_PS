@@ -17,8 +17,11 @@ public class Vanzator extends User{
     @Column(name = "id", nullable = false)
     private Long id;
 
+    private String nume;
     private String interval_orar;
     private int numar_casa;
+    private String username;
+    private String password;
 
     /**
      * Instantiates a new Vanzator.
@@ -26,11 +29,15 @@ public class Vanzator extends User{
      * @param nume          the nume
      * @param interval_orar the interval orar
      * @param numar_casa    the numar casa
+     * @param username      the username
+     * @param password      the password
      */
-    public Vanzator(String nume, String interval_orar, int numar_casa) {
-        super(nume);
+    public Vanzator(String nume, String interval_orar, int numar_casa, String username, String password) {
+        this.nume = nume;
         this.interval_orar = interval_orar;
         this.numar_casa = numar_casa;
+        this.username = username;
+        this.password = password;
     }
 
     /**
@@ -40,12 +47,30 @@ public class Vanzator extends User{
 
     }
 
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getNume() {
+        return nume;
+    }
+
+    public void setNume(String nume) {
+        this.nume = nume;
     }
 
     /**
@@ -84,13 +109,31 @@ public class Vanzator extends User{
         this.numar_casa = numar_casa;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "Vanzator{" +
                 "id=" + id +
-                ", nume='" + this.getNume() + '\'' +
+                ", nume='" + nume + '\'' +
                 ", interval_orar='" + interval_orar + '\'' +
                 ", numar_casa=" + numar_casa +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 

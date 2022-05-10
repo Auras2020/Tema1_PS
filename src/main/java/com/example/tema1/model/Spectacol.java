@@ -1,9 +1,13 @@
 package com.example.tema1.model;
 
+import com.example.tema1.controller.SpectacolController;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 /**
  * The type Spectacol.
@@ -11,16 +15,25 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-public class Spectacol extends Event{
+public class Spectacol extends Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "spectacol_id", nullable = false)
     private Long id;
 
+    private String nume;
     private String tip_muzica;
+    private String data;
     private String locatie;
     private String artisti;
     private String interval_orar;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JsonBackReference
+    @JoinTable(name="bilete_spectacole",
+            joinColumns = @JoinColumn(name="spectacol_id"),
+            inverseJoinColumns = @JoinColumn(name="client_id"))
+    private Set<Client> clients1;
 
     /**
      * Instantiates a new Spectacol.
@@ -33,8 +46,9 @@ public class Spectacol extends Event{
      * @param interval_orar the interval orar
      */
     public Spectacol(String nume, String tip_muzica, String data, String locatie, String artisti, String interval_orar) {
-        super(nume, data);
+        this.nume = nume;
         this.tip_muzica = tip_muzica;
+        this.data = data;
         this.locatie = locatie;
         this.artisti = artisti;
         this.interval_orar = interval_orar;
@@ -47,12 +61,38 @@ public class Spectacol extends Event{
 
     }
 
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getNume() {
+        return nume;
+    }
+
+    public void setNume(String nume) {
+        this.nume = nume;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 
     /**
@@ -127,13 +167,31 @@ public class Spectacol extends Event{
         this.interval_orar = interval_orar;
     }
 
+    /**
+     * Gets clients 1.
+     *
+     * @return the clients 1
+     */
+    public Set<Client> getClients1() {
+        return clients1;
+    }
+
+    /**
+     * Sets clients 1.
+     *
+     * @param clients1 the clients 1
+     */
+    public void setClients1(Set<Client> clients1) {
+        this.clients1 = clients1;
+    }
+
     @Override
     public String toString() {
         return "Spectacol{" +
                 "id=" + id +
-                ", nume='" + this.getNume() + '\'' +
+                ", nume='" + nume + '\'' +
                 ", tip_muzica='" + tip_muzica + '\'' +
-                ", data='" + this.getData() + '\'' +
+                ", data='" + data + '\'' +
                 ", locatie='" + locatie + '\'' +
                 ", artisti='" + artisti + '\'' +
                 ", interval_orar='" + interval_orar + '\'' +

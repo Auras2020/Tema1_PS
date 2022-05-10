@@ -5,10 +5,25 @@ import com.example.tema1.model.Client;
 
 import java.util.Optional;
 
+/**
+ * The interface Angajat service.
+ */
 public interface IAngajatService {
 
+    /**
+     * Save angajat.
+     *
+     * @param angajat the angajat
+     * @return the angajat
+     */
     Angajat save(Angajat angajat);
 
+    /**
+     * Find by id optional.
+     *
+     * @param id the id
+     * @return the optional
+     */
     Optional<Angajat> findById(Long id);
 
     /**
